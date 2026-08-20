@@ -1,16 +1,14 @@
-# MHE Scheduler v5 with Clean Gantt
+# v5 Gantt-only syntax fix
 
-This package preserves the v5-style application and changes only the Gantt presentation layer:
-- month, week, and date bands share one sticky header
-- task bubbles sit directly beneath their dates
-- task names remain sticky during horizontal scrolling
-- the date header remains sticky during vertical scrolling
-- the bottom horizontal scrollbar stays synchronized
-- baseline bars remain available
+This patch intentionally contains only the corrected Gantt component and its CSS. It does not replace the v5 task library, scheduling logic, resources, suppliers, exports, or LocalStorage.
 
-## Codespaces
-```bash
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
+## Apply to v5
+1. Copy `Gantt.jsx` to `src/Gantt.jsx`.
+2. Add this import near the top of `src/main.jsx`:
+   `import Gantt from './Gantt';`
+3. Delete or rename the old `function Gantt(...)` / `const Gantt...` in `src/main.jsx` to prevent a duplicate declaration.
+4. Append `gantt-cleanup.css` to the bottom of `src/styles.css`.
+5. Verify: `npm run build`
+6. Start: `npm run dev`
+
+The prior extra closing brace before `createRoot(...)` is not present in this component.
