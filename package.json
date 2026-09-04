@@ -1,1 +1,22 @@
-{"scripts":{"dev":"vite --host 0.0.0.0","build":"vite build"},"dependencies":{"vite":"5.4.19","react":"18.3.1","react-dom":"18.3.1","lucide-react":"0.468.0"}}
+{
+  "name": "mhe-scheduler-stackblitz",
+  "private": true,
+  "version": "1.2.0",
+  "type": "module",
+  "description": "MHE Project Scheduler - Sat/Sun/Hols, Phase editable, 5d/1w duration, Parent rollup, Quote Parser",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.400.0",
+    "jspdf": "^2.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.8"
+  }
+}

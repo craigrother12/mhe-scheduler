@@ -1,14 +1,19 @@
-# v5 Gantt-only syntax fix
+# MHE Scheduler - Latest Best (StackBlitz)
 
-This patch intentionally contains only the corrected Gantt component and its CSS. It does not replace the v5 task library, scheduling logic, resources, suppliers, exports, or LocalStorage.
+## What's in this version (fixed)
+- Sat/Sun/Hols calendar (was Fri/Sat/Hols)
+- Phase editable inline + Bulk Set Phase
+- Duration 5d / 1w support
+- Parent rollup fix
+- PDF export no overlap
+- No duplicate isWeekendSatSun - builds on Netlify
 
-## Apply to v5
-1. Copy `Gantt.jsx` to `src/Gantt.jsx`.
-2. Add this import near the top of `src/main.jsx`:
-   `import Gantt from './Gantt';`
-3. Delete or rename the old `function Gantt(...)` / `const Gantt...` in `src/main.jsx` to prevent a duplicate declaration.
-4. Append `gantt-cleanup.css` to the bottom of `src/styles.css`.
-5. Verify: `npm run build`
-6. Start: `npm run dev`
+## StackBlitz Import
+1. Go to https://stackblitz.com/ -> New Project -> Import from file / Drag & Drop
+2. Drag this zip
+3. npm install runs automatically, then npm run dev
 
-The prior extra closing brace before `createRoot(...)` is not present in this component.
+## Dev
+- main.jsx = scheduler + holidays
+- Gantt.jsx = timeline
+- QuoteParser.jsx = vendor quotes
