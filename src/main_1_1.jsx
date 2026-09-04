@@ -484,7 +484,7 @@ function App(){
 
   const dateRange = useMemo(()=>{ if(!rows.length) return {min:'', max:''}; const starts=rows.map(r=>r.start).filter(Boolean).sort(); const ends=rows.map(r=>r.finish).filter(Boolean).sort(); return {min:starts[0]||'', max:ends.at(-1)||''}; }, [rows]);
 
-  useEffect(()=>{ document.title='MHE Project Scheduler'; },[]);
+  useEffect(()=>{ document.title='Hy-Tek Project Scheduler'; },[]);
   const cp=useMemo(()=>criticalPath(rows),[rows]);
   useEffect(()=>{ if(!toast) return; const t=setTimeout(()=>setToast(null),3500); return()=>clearTimeout(t); },[toast]);
   useEffect(()=>{ if(rows.length===0) setShowOnboarding(true); }, []);
@@ -1446,7 +1446,7 @@ ${tasksXml}
       <header className="newHeader">
         <div className="headerTop">
           <div className="brandRow">
-            <div className="logo">MHE Project Scheduler</div>
+            <div className="logo">Hy-Tek Project Scheduler</div>
             <div className="saveStatusDot"><span className={`dot ${saveStatus}`}></span>{saveStatus==='saving'?'Saving...':saveStatus==='saved'?'✓ Saved':'Error'}</div>
             <div className="undoRedo">
               <button onClick={undo} disabled={!canUndo} title="Undo (Ctrl+Z)"><Undo2 size={14}/></button>
@@ -1623,7 +1623,7 @@ ${tasksXml}
                 </div>
                 <div className="modalRow">
                   <div className="modalField"><label>Resource</label><input value={customForm.resource} onChange={e=>setCustomForm({...customForm, resource:e.target.value})} placeholder="PM, Crew"/></div>
-                  <div className="modalField"><label>Supplier</label><input value={customForm.supplier} onChange={e=>setCustomForm({...customForm, supplier:e.target.value})} placeholder="MHE"/></div>
+                  <div className="modalField"><label>Supplier</label><input value={customForm.supplier} onChange={e=>setCustomForm({...customForm, supplier:e.target.value})} placeholder="Hy-Tek"/></div>
                 </div>
                 <div className="modalField" style={{background: calendarCfg.enabled ? '#FEF2F2' : '#F0FDF4', padding:8, borderRadius:8, border: `1px solid ${calendarCfg.enabled ? '#FECACA' : '#BBF7D0'}`}}>
                   <label style={{display:'flex',alignItems:'center',gap:6}}><input type="checkbox" checked={customForm.allowNonWork} onChange={e=>setCustomForm({...customForm, allowNonWork:e.target.checked})}/>Override Calendar - Allow work on Fri/Sat/Holidays for this task</label>
@@ -1810,7 +1810,7 @@ function ListView({rows,visibleRows,levelMap,childrenMap,patch,setRows,addPred,u
                   {visibleCols.variance && <td style={{width:colWidths.variance, minWidth:colWidths.variance}}><span className={`variance ${vClass}`}>{variance==null?'-':variance===0?'On time':variance>0?`+${variance}d late`:`${variance}d early`}</span></td>}
                   {visibleCols.area && <td style={{width:colWidths.area, minWidth:colWidths.area}}><input className="textBox" defaultValue={x.area || ''} onBlur={e=>{ if(e.target.value!==x.area) patch(x.uid,{area:e.target.value}); }} placeholder="Area" /></td>}
                   {visibleCols.resource && <td style={{width:colWidths.resource, minWidth:colWidths.resource}}><input className="textBox" defaultValue={x.resource||''} onBlur={e=>{ if(e.target.value!==x.resource) patch(x.uid,{resource:e.target.value}); }} placeholder="PM" /></td>}
-                  {visibleCols.supplier && <td style={{width:colWidths.supplier, minWidth:colWidths.supplier}}><input className="textBox" defaultValue={x.supplier||''} onBlur={e=>{ if(e.target.value!==x.supplier) patch(x.uid,{supplier:e.target.value}); }} placeholder="MHE" /></td>}
+                  {visibleCols.supplier && <td style={{width:colWidths.supplier, minWidth:colWidths.supplier}}><input className="textBox" defaultValue={x.supplier||''} onBlur={e=>{ if(e.target.value!==x.supplier) patch(x.uid,{supplier:e.target.value}); }} placeholder="Hy-Tek" /></td>}
                   {visibleCols.allow && <td style={{width:colWidths.allow, minWidth:colWidths.allow}}><label style={{display:'flex',alignItems:'center',gap:4,fontSize:11,cursor:'pointer'}}><input type="checkbox" checked={!!x.allowNonWork} onChange={e=>patch(x.uid,{allowNonWork:e.target.checked})}/> {x.allowNonWork?'⚠️ Allow':'Allow'}</label></td>}
                   <td style={{width:50}}><button onClick={()=>setRows(r=>schedule(r.filter(y=>y.uid!==x.uid).map(y=>({...y,preds:(y.preds||[]).filter(p=>p.uid!==x.uid), parentUid: y.parentUid===x.uid ? null : y.parentUid})), calendarCfg))}><Trash2 size={14}/></button></td>
                 </tr>
